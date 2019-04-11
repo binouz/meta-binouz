@@ -1,0 +1,34 @@
+--- a/chromium/chromium-68.0.3440.91/build/config/compiler/BUILD.gn	2018-08-17 16:29:01.929980453 +0000
++++ b/chromium/chromium-68.0.3440.91/build/config/compiler/BUILD.gn	2018-08-17 16:29:57.009754093 +0000
+@@ -619,15 +619,6 @@
+     if (is_mac) {
+       ldflags += [ "-Wl,-all_load" ]
+     }
+-
+-    # This flag causes LTO to create an .ARM.attributes section with the correct
+-    # architecture. This is necessary because LLD will refuse to link a program
+-    # unless the architecture revision in .ARM.attributes is sufficiently new.
+-    # TODO(pcc): The contents of .ARM.attributes should be based on the
+-    # -march flag passed at compile time (see llvm.org/pr36291).
+-    if (current_cpu == "arm") {
+-      ldflags += [ "-march=$arm_arch" ]
+-    }
+   }
+ 
+   if (compiler_timing) {
+@@ -698,15 +689,6 @@
+         cflags += [ "--target=arm-linux-gnueabihf" ]
+         ldflags += [ "--target=arm-linux-gnueabihf" ]
+       }
+-      if (!is_nacl) {
+-        cflags += [
+-          "-march=$arm_arch",
+-          "-mfloat-abi=$arm_float_abi",
+-        ]
+-      }
+-      if (arm_tune != "") {
+-        cflags += [ "-mtune=$arm_tune" ]
+-      }
+     } else if (current_cpu == "arm64") {
+       if (is_clang && !is_android && !is_nacl && !is_fuchsia) {
+         cflags += [ "--target=aarch64-linux-gnu" ]

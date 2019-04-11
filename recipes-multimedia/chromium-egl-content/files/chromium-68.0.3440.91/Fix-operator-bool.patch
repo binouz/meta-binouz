@@ -1,0 +1,27 @@
+diff --git a/mojo/public/cpp/bindings/associated_interface_ptr_info.h b/mojo/public/cpp/bindings/associated_interface_ptr_info.h
+index 1f79662bd794..cc3f62716795 100644
+--- a/chromium/chromium-68.0.3440.91/mojo/public/cpp/bindings/associated_interface_ptr_info.h
++++ b/chromium/chromium-68.0.3440.91/mojo/public/cpp/bindings/associated_interface_ptr_info.h
+@@ -45,7 +45,7 @@ class AssociatedInterfacePtrInfo {
+ 
+   bool is_valid() const { return handle_.is_valid(); }
+ 
+-  explicit operator bool() const { return handle_; }
++  explicit operator bool() const { return handle_.is_valid(); }
+ 
+   ScopedInterfaceEndpointHandle PassHandle() {
+     return std::move(handle_);
+diff --git a/mojo/public/cpp/bindings/associated_interface_request.h b/mojo/public/cpp/bindings/associated_interface_request.h
+index 12d2f3ce1df1..0926f3df92f8 100644
+--- a/chromium/chromium-68.0.3440.91/mojo/public/cpp/bindings/associated_interface_request.h
++++ b/chromium/chromium-68.0.3440.91/mojo/public/cpp/bindings/associated_interface_request.h
+@@ -50,7 +50,7 @@ class AssociatedInterfaceRequest {
+   // handle.
+   bool is_pending() const { return handle_.is_valid(); }
+ 
+-  explicit operator bool() const { return handle_; }
++  explicit operator bool() const { return handle_.is_valid(); }
+ 
+   ScopedInterfaceEndpointHandle PassHandle() { return std::move(handle_); }
+ 
+
