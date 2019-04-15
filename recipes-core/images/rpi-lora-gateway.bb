@@ -21,6 +21,7 @@ IMAGE_INSTALL_append += " \
 	lshw \
 	liberation-fonts \
 	wiringpi \
+	connman \
 "
 
 IMAGE_FEATURES_append += " \
@@ -33,3 +34,5 @@ ENABLE_SPI_BUS="1"
 
 GLIBC_GENERATE_LOCALES = "fr_FR-UTF.8"
 LINGUAS = "fr-fr"
+
+hostname_pn-base-files = "lora-gateway"
