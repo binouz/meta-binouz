@@ -22,6 +22,8 @@ IMAGE_INSTALL_append += " \
 	liberation-fonts \
 	wiringpi \
 	connman \
+	wpa-supplicant \
+	linux-firmware-rtl8188 \
 "
 
 IMAGE_FEATURES_append += " \
@@ -29,6 +31,12 @@ IMAGE_FEATURES_append += " \
         tools-debug \
         ssh-server-openssh \
 "
+
+DISTRO_FEATURES_append = " \
+        wifi \
+"
+
+PACKAGECONFIG_append_pn-connman = " wifi "
 
 ENABLE_SPI_BUS="1"
 
